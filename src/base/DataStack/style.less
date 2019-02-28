@@ -1,0 +1,20 @@
+@baseWith: 5rem;
+@baseHeight: 3rem;
+.stack {
+  display: flex;
+  align-items: center;
+  border: 2px solid #eee;
+  border-right: none;
+  padding: 0 2rem;
+  height: @baseHeight * 2;
+  color: white;
+  text-align: center;
+
+  .stack-item {
+    margin-right: 2rem;
+    width: @baseWith;
+    height: @baseHeight;
+    line-height: @baseHeight;
+    background: #409EFF;
+  }
+}

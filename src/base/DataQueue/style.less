@@ -1,0 +1,20 @@
+@baseWith: 5rem;
+@baseHeight: 3rem;
+.queue {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid #eee;
+  border-bottom: 2px solid #eee;
+  padding: 0 2rem;
+  height: @baseHeight * 2;
+  color: white;
+  text-align: center;
+
+  .queue-item {
+    margin-right: 2rem;
+    width: @baseWith;
+    height: @baseHeight;
+    line-height: @baseHeight;
+    background: #409EFF;
+  }
+}
