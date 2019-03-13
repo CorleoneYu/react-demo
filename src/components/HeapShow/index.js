@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { random, randomData, arySwap } from 'common/ultils';
 import DataQueue from 'base/DataQueue';
 import TreeNode from 'base/TreeNode';
-import Tree from 'common/tree';
+import FullTree from 'common/full-tree';
 import Heap from 'common/heap';
 
 import './style.less';
@@ -33,7 +33,7 @@ class HeapShow extends Component {
   pop = () => {
     let { heap } = this.state;
     let r = heap.pop();
-    let heapTree = Tree.createTree(0, heap.data);
+    let heapTree = FullTree.createTree(0, heap.data);
     this.setState({
       heap,
       heapTree
@@ -43,7 +43,7 @@ class HeapShow extends Component {
   insert = (val) => {
     let { heap } = this.state;
     heap.insert(val);
-    let heapTree = Tree.createTree(0, heap.data);
+    let heapTree = FullTree.createTree(0, heap.data);
     this.setState({
       heap,
       heapTree

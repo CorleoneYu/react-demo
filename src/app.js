@@ -26,6 +26,7 @@ import HashLink from 'components/HashLink';
 import TreeShow from 'components/TreeShow';
 import Majority from 'components/Majority';
 import HeapShow from 'components/HeapShow';
+import CirclePrint from 'components/CirclePrint';
 
 class App extends Component {
 
@@ -33,9 +34,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <Layout style={{ minHeight: '100vh' }}>
+          <Layout style={{ minHeight: '100vh'}}>
             <Sider >
-              <Menu theme="dark" mode="inline" defaultOpenKeys={["sub1", "sub2", "sub3"]}>
+              <Menu theme="dark" mode="inline" 
+              defaultOpenKeys={["sub1", "sub2", "sub3"]}>
                 <SubMenu key="sub1" title="sort" >
                   <Menu.Item key="1">
                     <Link to="/StackSort">Stack Sort</Link>
@@ -53,6 +55,9 @@ class App extends Component {
                   </Menu.Item>
                   <Menu.Item key="5">
                     <Link to="/Majority">Majority</Link>
+                  </Menu.Item>
+                  <Menu.Item key="8">
+                    <Link to="/CirclePrint">CirclePrint</Link>
                   </Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub3" title="data structure" >
@@ -75,10 +80,11 @@ class App extends Component {
                 <Route path="/Majority" component={Majority} />
                 <Route path="/TreeShow" component={TreeShow} />
                 <Route path="/HeapShow" component={HeapShow} />
+                <Route path="/CirclePrint" component={CirclePrint} />
+              
                 <Redirect to="/StackSort" />
               </Switch>
             </Content>
-              
           </Layout>
         </Router>
       </Provider>

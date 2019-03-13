@@ -8,6 +8,7 @@ const express = require('express');
 
 //mini-css-extract-plugin替代了它 用来把css打包成单独文件
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const axios = require('axios');
 
 function resolve (dir) {
   return path.join(__dirname, dir)
@@ -38,12 +39,32 @@ module.exports = {
     },
     disableHostCheck: true,
     before: function(app, server) {
+
       app.get('/img/:imgName', function (req, res) {
         console.log("req.params", req.params); 
         let filePath = path.join(__dirname, 'src', 'asset', 'img', req.params.imgName);
         res.sendfile(filePath);
         
-      })
+      });
+
+      // CSRF测试
+      app.get('/api/BigType/getBig', function (req, res) {
+        var url = 'http://www.shashafushi.cn:8080/api/BigType/getBig';
+    
+        axios.get(url, {
+          headers: {
+            // "host": 'www.shashafushi.cn:8080',
+            // "referer": 'http://www.shashafushi.cn:8080/',
+            // "origin": 'http://www.shashafushi.cn:8080/',
+            "Cookie" : 'state=' + 123456,
+          }
+        }).then(response => {
+          console.log("getBig", response.config);
+          res.json(response.data);
+        }).catch(e => {
+          console.log(e);
+        })
+      });
     }
   },
   module: {

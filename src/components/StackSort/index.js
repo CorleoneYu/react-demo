@@ -26,7 +26,8 @@ class StackSort extends Component {
     
     let count = 0;
     this.state = {
-      SStack, RStack, current, length, count
+      SStack, RStack, current, length, count,
+      target: 'javascript:alert(%27XSS%27)'
     }
     
   }
@@ -67,13 +68,17 @@ class StackSort extends Component {
 
   render() {
     let { SStack, current, RStack, length, count } = this.state;
+    let { target } = this.state;
     let RStackClone = [...RStack.stack];
     RStackClone.reverse();
 
+    console.log(this.props);
     return (
       <div>
         <h1>Stack Sort</h1>
-
+        <a href={target}>跳转</a>
+        <img src="http://www.shashafushi.cn:8080/api/BigType/getBig" alt=""/>
+        <form action="http://www.shashafushi.cn:8080/api/BigType/getBig" method="POST"></form>
         <Button className="mr20" type="primary" onClick={this.init}>初始化</Button>
         <Button className="mr20" type="primary" onClick={this.sort}>下一步</Button>
         <span>排序次数：{count}</span>
@@ -94,8 +99,6 @@ class StackSort extends Component {
       </div>
     )
   }
-
-  
 }
 
 export default StackSort;
